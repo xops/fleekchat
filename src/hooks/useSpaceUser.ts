@@ -1,17 +1,17 @@
 import React, { Dispatch, useEffect } from "react";
 import { Users, SpaceUser, VaultBackupType, BrowserStorage } from "@spacehq/sdk";
 
-export interface LoginInfo {
+export interface ILoginInfo {
   uuid: string;
   passphrase: string;
   backupType: VaultBackupType;
-};
+}
 
-export default function useSpaceUser(): [SpaceUser | undefined, Dispatch<LoginInfo>, Dispatch<LoginInfo>] {
+export default function useSpaceUser(): [SpaceUser | undefined, Dispatch<ILoginInfo>, Dispatch<ILoginInfo>] {
   const [users, setUsers] = React.useState<Users>();
   const [user, setUser] = React.useState<SpaceUser>();
-  const [loginInfo, setLoginInfo] = React.useState<LoginInfo>();
-  const [registerInfo, setRegisterInfo] = React.useState<LoginInfo>();
+  const [loginInfo, setLoginInfo] = React.useState<ILoginInfo>();
+  const [registerInfo, setRegisterInfo] = React.useState<ILoginInfo>();
 
   const [userList, setUserList] = React.useState();
 
@@ -21,7 +21,7 @@ export default function useSpaceUser(): [SpaceUser | undefined, Dispatch<LoginIn
     const asyncStuff = async () => {
       setUsers(await Users.withStorage(
         bs,
-        { endpoint: "wss://auth-dev.space.storage" }
+        { endpoint: "wss://auth-dev.space.storage" },
       ));
     };
 
@@ -45,7 +45,7 @@ export default function useSpaceUser(): [SpaceUser | undefined, Dispatch<LoginIn
     users.recoverKeysByPassphrase(
       loginInfo.uuid,
       loginInfo.passphrase,
-      loginInfo.backupType
+      loginInfo.backupType,
     )
       .then(setUser);
 

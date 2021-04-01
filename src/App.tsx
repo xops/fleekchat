@@ -53,8 +53,8 @@ function App(props: any) {
 
     const store = new UserStorage(user);
     store.listDirectory({ bucket: "fleekchat", path: "" }).then((res) => {
-      debugger;
-      console.log(res);
+      /* debugger;
+       * console.log(res); */
     });
 
   }, 10000, true);
@@ -90,7 +90,13 @@ function App(props: any) {
                 </Link>
               </Grid>
               <Grid item>
-                { user ? undefined : <Button variant="outlined" onClick={() => setLoginDialogOpen(true)}> Login </Button> }
+                {
+                  user ?
+                  undefined :
+                  <Button variant="outlined" onClick={() => setLoginDialogOpen(true)}>
+                    Login
+                  </Button>
+                }
                 <LanguageMenu />
                 <Tooltip title={t("FleekChat Github") as string}>
                   <IconButton
