@@ -1,5 +1,7 @@
 # FleekChat
 
+Demo video: https://youtu.be/1Z6tnafYcxU
+
 This is a Fleek react starter kit
 
 it provides a login / register flow for fleek apps.
