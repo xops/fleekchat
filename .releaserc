@@ -22,11 +22,7 @@
     "@semantic-release/changelog",
     "@semantic-release/git",
     "@semantic-release/github",
-    "@qiwi/semantic-release-gh-pages-plugin",
-    {
-      "path": "semantic-release-docker",
-      "registryUrl": "docker.io"
-    }
+    "@qiwi/semantic-release-gh-pages-plugin"
   ],
   "publish": [
     "@semantic-release/github",
@@ -36,10 +32,6 @@
       "src": "build/",
       "branch": "gh-pages",
       "pullTagsBranch": ""
-    },
-    {
-      "path": "semantic-release-docker",
-      "name": "etclabscore/expedition"
     }
   ],
   "success": [
