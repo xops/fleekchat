@@ -1,4 +1,4 @@
-import { AppBar, CssBaseline, Toolbar, Typography, IconButton, Grid, InputBase, Tooltip, Button } from "@material-ui/core";
+import { AppBar, CssBaseline, Toolbar, Typography, IconButton, Grid, Tooltip, Button } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/styles";
 import Link from "@material-ui/core/Link";
 import React, { useState, /* useEffect */ } from "react";

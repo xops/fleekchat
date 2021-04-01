@@ -13,7 +13,7 @@ export default function useSpaceUser(): [SpaceUser | undefined, Dispatch<ILoginI
   const [loginInfo, setLoginInfo] = React.useState<ILoginInfo>();
   const [registerInfo, setRegisterInfo] = React.useState<ILoginInfo>();
 
-  const [userList, setUserList] = React.useState();
+  /* const [userList, setUserList] = React.useState(); */
 
   useEffect(() => {
     const bs = new BrowserStorage();
@@ -36,7 +36,7 @@ export default function useSpaceUser(): [SpaceUser | undefined, Dispatch<ILoginI
     if (authdUsers.length > 0) {
       setUser(authdUsers[0]);
     }
-  }, [users]);
+  }, [users, user]);
 
   useEffect(() => {
     if (users === undefined) { return; }
