@@ -10,13 +10,7 @@
     "@semantic-release/exec"
   ],
   "prepare": [
-    "@semantic-release/changelog",
-    [
-      "@semantic-release/exec",
-      {
-        "prepareCmd": "./prepare.sh ${nextRelease.version}"
-      }
-    ]
+    "@semantic-release/changelog"
   ],
   "verifyConditions": [
     "@semantic-release/changelog",
