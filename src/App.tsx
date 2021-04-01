@@ -15,13 +15,12 @@ import LanguageMenu from "./containers/LanguageMenu";
 import { createBrowserHistory } from "history";
 import { QueryParamProvider } from "use-query-params";
 import { createPreserveQueryHistory } from "./helpers/createPreserveHistory";
-import expeditionLogo from "./expedition.png";
-import { SpaceUser } from "@spacehq/sdk";
-import { UserStorage, AddItemsResultSummary } from "@spacehq/sdk";
+import fleekChatLogo from "./fleekchat.png";
+import { UserStorage } from "@spacehq/sdk";
 import { useInterval } from "use-interval";
 import useSpaceUserStore from "./stores/useSpaceUserStore";
 import LoginDialog from "./components/LoginDialog/LoginDialog";
-import { LoginInfo} from "./hooks/useSpaceUser";
+import { LoginInfo } from "./hooks/useSpaceUser";
 
 const history = createPreserveQueryHistory(createBrowserHistory, ["network", "rpcUrl"])();
 
@@ -32,7 +31,6 @@ function App(props: any) {
 
   const [user, setLoginInfo, setRegisterInfo] = useSpaceUserStore();
   const [storage, setStorage] = useState<UserStorage>();
-
 
   const [loginDialogOpen, setLoginDialogOpen] = useState<boolean>(false);
 
@@ -80,7 +78,7 @@ function App(props: any) {
                         alt="expedition-logo"
                         height="30"
                         style={{ marginRight: "10px" }}
-                        src={expeditionLogo}
+                        src={fleekChatLogo}
                       />
                     </Grid>
                     <Grid>
