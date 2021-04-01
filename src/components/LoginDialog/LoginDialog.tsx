@@ -6,13 +6,13 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import { LoginInfo } from "../../hooks/useSpaceUser";
+import { ILoginInfo } from "../../hooks/useSpaceUser";
 import { VaultBackupType } from "@spacehq/sdk";
 
 interface IProps {
   open: boolean;
-  onRegister: (registerInfo: LoginInfo) => void;
-  onLogin: (loginInfo: LoginInfo) => void;
+  onRegister: (registerInfo: ILoginInfo) => void;
+  onLogin: (loginInfo: ILoginInfo) => void;
   onCancel: () => void;
 }
 
