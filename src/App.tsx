@@ -1,7 +1,7 @@
-import { AppBar, CssBaseline, Toolbar, Typography, IconButton, Grid, InputBase, Tooltip, CircularProgress, Button } from "@material-ui/core";
+import { AppBar, CssBaseline, Toolbar, Typography, IconButton, Grid, Tooltip, Button } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/styles";
 import Link from "@material-ui/core/Link";
-import React, { Dispatch, ChangeEvent, KeyboardEvent, useState, useEffect } from "react";
+import React, { useState, /* useEffect */ } from "react";
 import { Link as RouterLink, Router, Route, Switch } from "react-router-dom";
 import useDarkMode from "use-dark-mode";
 import "./App.css";
@@ -15,13 +15,12 @@ import LanguageMenu from "./containers/LanguageMenu";
 import { createBrowserHistory } from "history";
 import { QueryParamProvider } from "use-query-params";
 import { createPreserveQueryHistory } from "./helpers/createPreserveHistory";
-import expeditionLogo from "./expedition.png";
-import { SpaceUser } from "@spacehq/sdk";
-import { UserStorage, AddItemsResultSummary } from "@spacehq/sdk";
+import fleekChatLogo from "./fleekchat.png";
+import { UserStorage } from "@spacehq/sdk";
 import { useInterval } from "use-interval";
 import useSpaceUserStore from "./stores/useSpaceUserStore";
 import LoginDialog from "./components/LoginDialog/LoginDialog";
-import { LoginInfo} from "./hooks/useSpaceUser";
+import { ILoginInfo } from "./hooks/useSpaceUser";
 
 const history = createPreserveQueryHistory(createBrowserHistory, ["network", "rpcUrl"])();
 
@@ -31,12 +30,11 @@ function App(props: any) {
   const theme = darkMode.value ? darkTheme : lightTheme;
 
   const [user, setLoginInfo, setRegisterInfo] = useSpaceUserStore();
-  const [storage, setStorage] = useState<UserStorage>();
-
+  /* const [storage, setStorage] = useState<UserStorage>(); */
 
   const [loginDialogOpen, setLoginDialogOpen] = useState<boolean>(false);
 
-  const submitRegisterDialog = (registerInfo: LoginInfo) => {
+  const submitRegisterDialog = (registerInfo: ILoginInfo) => {
     setLoginDialogOpen(false);
     setRegisterInfo(registerInfo);
   };
@@ -45,7 +43,7 @@ function App(props: any) {
     setLoginDialogOpen(false);
   };
 
-  const submitLoginDialog = (loginInfo: LoginInfo) => {
+  const submitLoginDialog = (loginInfo: ILoginInfo) => {
     setLoginDialogOpen(false);
     setLoginInfo(loginInfo);
   };
@@ -55,8 +53,8 @@ function App(props: any) {
 
     const store = new UserStorage(user);
     store.listDirectory({ bucket: "fleekchat", path: "" }).then((res) => {
-      debugger;
-      console.log(res);
+      /* debugger;
+       * console.log(res); */
     });
 
   }, 10000, true);
@@ -80,7 +78,7 @@ function App(props: any) {
                         alt="expedition-logo"
                         height="30"
                         style={{ marginRight: "10px" }}
-                        src={expeditionLogo}
+                        src={fleekChatLogo}
                       />
                     </Grid>
                     <Grid>
@@ -92,7 +90,13 @@ function App(props: any) {
                 </Link>
               </Grid>
               <Grid item>
-                { user ? undefined : <Button variant="outlined" onClick={() => setLoginDialogOpen(true)}> Login </Button> }
+                {
+                  user ?
+                  undefined :
+                  <Button variant="outlined" onClick={() => setLoginDialogOpen(true)}>
+                    Login
+                  </Button>
+                }
                 <LanguageMenu />
                 <Tooltip title={t("FleekChat Github") as string}>
                   <IconButton
